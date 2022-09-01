@@ -74,13 +74,17 @@ searchText.addEventListener('blur',()=>{
     inText=2
 })
 
-$(document).on('keypress', (e) => {
-    if(inText===2){
-    const {key} = e
-    for (let i = 0; i < hashMap.length; i++) {
-      if (hashMap[i].logo.toLowerCase() === key) {
-        window.open(hashMap[i].url)
-      }
-    }}else{null}
-  })
+$(document).on('keypress',(e)=>{
+const {key}=e
+for (let i=0;i<hashMap.length;i++){
+  if(hashMap[i].logo.toLowerCase()===key){
+    window.open(hashMap[i].url)
+  }
+}
+})
+
+
+$('.searchForm').on('keypress',(e)=>{
+  e.stopPropagation()   //修复键盘事件在输入的时候也会触发。阻止冒泡
+})
 
